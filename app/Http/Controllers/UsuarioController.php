@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Usuario;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UsuarioController extends Controller
 {
@@ -15,6 +16,10 @@ class UsuarioController extends Controller
 
     public function Register (){
         return view('application');
+    }
+
+    public function User(){
+        return view('login');
     }
 
     public function store (Request $request) {
@@ -36,9 +41,39 @@ class UsuarioController extends Controller
 
 
         $usuario->password = bcrypt($request->input('password'));
-
+        //$user = Auth::user();
+        //$usuario->user_id = $user->id;
         $usuario->save();
 
         return redirect('/')->with('msg','Candidato cadastrado com sucesso!');
     }
+
+    public function login(Request $request) {
+        $credentials = $request->only('email', 'password');
+        if (auth()->validate($credentials)) {
+            if (auth()->attempt($credentials)) {
+                return redirect('/status/{id}');
+            }
+        }else{
+            return redirect('/login')->with('msg', 'Senha ou Email inválidos, tente novamente.');
+        }
+    }
+
+    public function status($id){
+
+        $user = Auth::user();
+
+        /*$usuario = Event::findOrFail($id);
+
+        if($user->id != $usuario->user_id){
+            return redirect('/');
+        }*/
+
+        $idArray=Usuario::pluck('id')->toArray();
+        $userCount = count($idArray);
+        $name= $user->name;
+        $username= $user->username;        
+        return view('status', ['userCount' => $userCount, 'name' => $name, 'username' => $username]);
+    }
+    
 }

@@ -4,19 +4,23 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Test SL</title>
+        <title>PROGRAMA Welcome</title>
+        <link rel="preload" href="/img/plano.jpg" as="image">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
         <!--CSS-->
         <link rel="stylesheet" href="/css/styles.css">
     </head>
-    <main>
-        @if (session('msg'))
-        <p class="msg">{{session('msg')}}</p>
-        @endif
-        @yield('content')
-    </main>
     <body>
+        <main>
+            @if (session('msg'))
+            <p class="msg">{{session('msg')}}</p>
+            @endif
+            @yield('content')
+        </main>
+        <div class="login-welcome">
+        <a href="/login">Entrar</a>
+        </div>
         <div class="general">
             <div class="title">
                 <h1>101 Vagas <br>Abertas para <br>Programadores</h1>
@@ -33,5 +37,20 @@
                 <a class="link" href="/register"><button type="button" class="button">Candidate-se</button></a>
             </div>
         </div>
+        <script>
+    const links = document.querySelectorAll('a');
+    const selectedLink = localStorage.getItem('selectedLink');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        links.forEach(l => l.classList.remove('selected'));
+        link.classList.add('selected');
+        localStorage.setItem('selectedLink', link.getAttribute('href'));
+      });
+      if (link.getAttribute('href') === selectedLink) {
+        link.classList.add('selected');
+      }
+    });
+
+  </script>
     </body>
 </html>
