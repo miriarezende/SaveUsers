@@ -6,14 +6,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
   <link rel="preload" href="/img/plano.jpg" as="image">
   <link rel="stylesheet" href="/css/styles.css">
-  <title>Status-Candidatura</title>
+  <title>STATUS CANDIDATURA</title>
 </head>
 <body>
   <div id="background-form" class="form">
     <div id="hi">
       <p class="hi">Olá, {{$name}}</p>
       <p class="username">{{$username}}</p>
-      <a class="logout" href="/login">Sair</a>
+      <form action="/logout" method="POST">
+        @csrf
+        <button class="logout" type="submit">Sair</button>
+      </form>
+      
     </div>
     <h2>Status do Processo Seletivo</h2>
     <div class="limit">

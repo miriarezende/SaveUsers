@@ -235,20 +235,19 @@ form input{
 }
 
 #hi .logout {
-  padding: 3px;
-  text-decoration: none;
+  margin-left: 710px;
+  width: 50px;
+  height: 30px;
   font-weight: bold;
+  font-size: 16px;
   color: #FFF;
   background-color: #4B0082;
   border-radius: 3px;
 }
 
 #hi .logout:hover {
-  margin:1px;
-  border-radius: 3px;
   background-color: #781992;
   color: #FFF;
-  text-decoration: underline; 
 }
 
 .login-welcome {
