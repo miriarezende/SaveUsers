@@ -1,6 +1,12 @@
 # User Registration and Authentication
 
-![preview](./github/preview.png)
+![preview](./public/img/github/preview01.png)
+
+![preview](./public/img/github/preview02.png)
+
+![preview](./public/img/github/preview03.png)
+
+![preview](./public/img/github/preview04.png)
 
 
 This project was developed with the aim of enhancing my knowledge in the Laravel framework, especially regarding database connectivity. It is responsible for registering and authenticating users for an early-stage selection process
